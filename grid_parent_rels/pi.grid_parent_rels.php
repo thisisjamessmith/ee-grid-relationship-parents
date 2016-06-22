@@ -2,7 +2,7 @@
 
 $plugin_info = array(
 	'pi_name'           => 'Grid Parent Relationships',
-	'pi_version'        => '1.0',
+	'pi_version'        => '1.1',
 	'pi_author'         => 'James Smith',
 	'pi_author_url'     => 'http://www.jamessmith.co.uk/',
 	'pi_description'    => 'Fetch parent relationships that are inside a grid column',
@@ -11,6 +11,9 @@ $plugin_info = array(
 
 class Grid_parent_rels
 {
+
+	var $return_data = "";
+
 	public function __construct()
 	{
 		$out = '';
@@ -30,7 +33,9 @@ class Grid_parent_rels
 				$ids[] = $result['parent_id'];
 			}
 			$out = implode("|", $ids);
+		} else {
+			$out = "0|";
 		}
-		return $out;
+		$this->return_data = $out;
 	}
 }
